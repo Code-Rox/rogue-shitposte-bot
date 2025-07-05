@@ -332,7 +332,7 @@ Get 10 back: Your 🌹💦🌷🎋💐💦🌹🌷🎋💦💐 Tiny garden
             return await ctx.send(f'The specified name ("{name}") already exists as factoid or alias!')
 
         await self.bot.db.exec(
-            f'''INSERT INTO "{self.config["db_table"]}" (name, message) VALUES ($1, $2)''', name, message
+            f'''INSERT INTO "{self.config["db_table"]}" (name, message, embed) VALUES ($1, $2, $3)''', name, message, False
         )
         await self.fetch_factoids(refresh=True)
         return await ctx.send(f'Entry "{name}" has been added.')
